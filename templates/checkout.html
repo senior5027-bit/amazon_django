@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    صفحه تسویه حساب
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">صفحه تسویه حساب</h2>
+    <p class="text-center">اینجا اطلاعات نهایی سفارش و فرم پرداخت قرار خواهد گرفت.</p>
+    
+    {% if cart_items %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">محصول</th>
+                    <th scope="col">قیمت واحد</th>
+                    <th scope="col">تعداد</th>
+                    <th scope="col">جمع جزئی</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.price }} تومان</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total }} تومان</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>جمع کل:</strong></td>
+                    <td colspan="1"><strong>{{ total_price }} تومان</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center mt-4">
+            {# اینجا دکمه برای ادامه به سمت پرداخت قرار خواهد گرفت #}
+            <button class="btn btn-primary">پرداخت و نهایی کردن سفارش</button>
+        </div>
+    {% else %}
+        <p class="alert alert-warning text-center">سبد خرید شما خالی است. برای تسویه حساب ابتدا محصولی به سبد اضافه کنید.</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'product:product_list' %}" class="btn btn-primary">ادامه خرید</a>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

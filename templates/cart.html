@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    سبد خرید شما
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">سبد خرید شما</h2>
+
+    {% if cart_items %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">محصول</th>
+                    <th scope="col">قیمت واحد</th>
+                    <th scope="col">تعداد</th>
+                    <th scope="col">جمع جزئی</th>
+                    <th scope="col">عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.price }} تومان</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total }} تومان</td>
+                    <td>
+                        <a href="{% url 'cart:remove_from_cart' item.product.id %}" class="btn btn-danger btn-sm">
+                            حذف از سبد
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>جمع کل:</strong></td>
+                    <td colspan="2"><strong>{{ total_price }} تومان</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center mt-4">
+            <a href="{% url 'product:product_list' %}" class="btn btn-secondary">ادامه خرید</a>
+            <a href="{% url 'cart:checkout' %}" class="btn btn-success ml-3">نهایی کردن خرید</a> {# اینجا اصلاح شد! #}
+        </div>
+    {% else %}
+        <p class="alert alert-info text-center">سبد خرید شما خالی است.</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'product:product_list' %}" class="btn btn-primary">ادامه خرید</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+pycacha/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+media/
+.env
+.vscode/
+.idea/
+thumbs.db
+.DS_Store
+staticfiles/
