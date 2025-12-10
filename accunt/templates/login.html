@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+body {
+    background: linear-gradient(120deg, #e6d4ff, #f8f3ff);
+    font-family: 'Vazirmatn', sans-serif;
+}
+.auth-box {
+    background: #ffffff;
+    width: 360px;
+    margin: 80px auto;
+    padding: 30px 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.auth-box h2 {
+    text-align: center;
+    color: #7a00cc;
+}
+.auth-box form input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+.auth-box form button {
+    width: 100%;
+    padding: 10px;
+    background: #7a00cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.auth-box form button:hover {
+    background: #8e2ae9;
+}
+</style>
+
+<div class="auth-box">
+    <h2>ورود به حساب</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="نام کاربری" required>
+        <input type="password" name="password" placeholder="رمز عبور" required>
+        <button type="submit">ورود</button>
+    </form>
+    <p style="text-align:center; margin-top:10px;">
+        حساب ندارید؟  
+        <a href="{% url 'accunt:signup' %}">ثبت‌نام</a>
+    </p>
+</div>
+{% endblock %}

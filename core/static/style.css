@@ -1,0 +1,317 @@
+/* style.css */
+
+/* --- تنظیمات عمومی و ریست CSS --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Vazirmatn', Arial, sans-serif; /* فرض می‌کنیم فونت Vazirmatn در سیستم موجود است یا ایمپورت می‌شود */
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+    color: #e0e0e0; /* رنگ متن پیش‌فرض */
+    background-color: #0d0d0d; /* پس‌زمینه اصلی سایت - بسیار تیره */
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی ناخواسته */
+}
+
+/* --- استایل‌های هدر (از base.html) --- */
+.header {
+    background: linear-gradient(90deg, #6a1b9a, #8e24aa); /* بنفش گرادیانت */
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo a {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ffc107; /* طلایی برای لوگو */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header .logo a:hover {
+    color: #ffe082;
+}
+
+.header .main-nav a,
+.header .cart-icon a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header .main-nav a:hover,
+.header .cart-icon a:hover {
+    color: #ffc107;
+}
+
+/* انیمیشن زیر خط برای لینک‌ها */
+.header .main-nav a::after,
+.header .cart-icon a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffc107;
+    transition: width 0.3s ease;
+}
+
+.header .main-nav a:hover::after,
+.header .cart-icon a:hover::after {
+    width: 100%;
+    left: 0; /* برای RTL باید از right به left تغییر کند */
+}
+
+.header .cart-icon {
+    font-size: 1.2em;
+    margin-right: 0; /* آخرین آیتم فاصله از راست نداشته باشد */
+}
+
+/* --- استایل‌های بخش اصلی (main) --- */
+.main {
+    min-height: calc(100vh - 180px); /* ارتفاع مینیمم برای محتوای اصلی */
+    background-color: #1a1a1a; /* رنگ تیره‌تر برای بخش اصلی */
+    padding: 40px 20px;
+}
+
+/* --- استایل‌های فوتر (از base.html) --- */
+.footer {
+    background: linear-gradient(90deg, #6a1b9a, #8e24aa); /* بنفش گرادیانت */
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.footer .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+    text-align: right;
+}
+
+.footer .footer-section h3 {
+    color: #ffc107; /* طلایی */
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.footer .footer-section p,
+.footer .footer-section ul {
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+.footer .footer-section ul {
+    list-style: none;
+}
+
+.footer .footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-section ul li a:hover {
+    color: #ffc107;
+}
+
+.footer .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #ffc107;
+}
+
+.footer .support-info {
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+.footer .support-info h4 {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+/* --- استایل‌های بخش مرکزی (سه آیتم جذاب) --- */
+.feature-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.feature-section h2 {
+    font-size: 2.8em;
+    color: #ffc107; /* طلایی */
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.feature-items-container {
+    display: flex;
+    flex-wrap: wrap; /* برای ریسپانسیو بودن */
+    justify-content: center;
+    gap: 40px; /* فاصله بین آیتم‌ها */
+    padding: 0 20px;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.08); /* پس‌زمینه شیشه‌ای */
+    backdrop-filter: blur(10px); /* افکت شیشه */
+    -webkit-backdrop-filter: blur(10px); /* برای سازگاری با Safari */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 30px;
+    width: 320px; /* عرض ثابت برای هر آیتم */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* سایه عمیق */
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.feature-item:hover {
+    transform: translateY(-15px) scale(1.03); /* حرکت به بالا و کمی بزرگ شدن */
+    box-shadow: 0 15px 45px rgba(106, 27, 154, 0.8); /* سایه با رنگ بنفش */
+}
+
+.feature-item img {
+    max-width: 100%;
+    height: 200px; /* ارتفاع ثابت برای تصاویر */
+    object-fit: contain; /* تصویر را کامل نشان می‌دهد بدون برش */
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0,0,0,0.3); /* بک‌گراند برای تصاویر شفاف */
+}
+
+.feature-item h3 {
+    font-size: 1.8em;
+    color: #9c27b0; /* بنفش روشن‌تر */
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(156, 39, 176, 0.4);
+}
+
+.feature-item p {
+    font-size: 1.1em;
+    color: #c0c0c0;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.feature-item .btn {
+    display: inline-block;
+    background-color: #ffc107; /* طلایی */
+    color: #2e0854; /* بنفش تیره */
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto; /* دکمه به پایین بچسبد */
+}
+
+.feature-item .btn:hover {
+    background-color: #ffe082;
+    transform: translateY(-3px);
+}
+
+/* --- ریسپانسیو برای موبایل و تبلت --- */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .header .main-nav {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .header .main-nav a,
+    .header .cart-icon a {
+        margin: 0 10px;
+    }
+
+    .feature-section h2 {
+        font-size: 2.2em;
+    }
+
+    .feature-items-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .feature-item {
+        width: 90%; /* عرض بیشتر در موبایل */
+    }
+
+    .footer .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .footer-section {
+        margin: 15px 0;
+        text-align: center;
+    }
+    .footer .social-icons a {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo a {
+        font-size: 1.8em;
+    }
+    .header .main-nav a,
+    .header .cart-icon a {
+        font-size: 1em;
+    }
+    .feature-section h2 {
+        font-size: 1.8em;
+    }
+    .feature-item h3 {
+        font-size: 1.5em;
+    }
+    .feature-item p {
+        font-size: 1em;
+    }
+    .feature-item .btn {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}

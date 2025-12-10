@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content-area"> {# می توانید کلاس های دلخواه خود را اینجا اضافه کنید #}
+    <h1 style="color: #fff; text-align: center; margin-top: 30px;">
+        پروفایل کاربر: <span style="color: #a76cd1;">{{ user.username }}</span>
+    </h1>
+    <div style="background: rgba(40, 40, 40, 0.7); border-radius: 10px; padding: 20px; margin: 20px auto; max-width: 600px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <p style="color: #eee; font-size: 16px;">نام: {{ user.first_name }}</p>
+        <p style="color: #eee; font-size: 16px;">نام خانوادگی: {{ user.last_name }}</p>
+        <p style="color: #eee; font-size: 16px;">ایمیل: {{ user.email|default:"نامشخص" }}</p>
+        {% if user.is_staff %}
+            <p style="color: #a76cd1; font-weight: bold;">(مدیر سایت)</p>
+        {% endif %}
+        <a href="#" style="display: inline-block; background-color: #6a0dad; color: #fff; padding: 10px 15px; border-radius: 5px; text-decoration: none; margin-top: 20px; transition: background-color 0.3s ease;">ویرایش پروفایل</a>
+    </div>
+</div>
+{% endblock %}

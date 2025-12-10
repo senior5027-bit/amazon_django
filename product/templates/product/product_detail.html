@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }} | FarzadShop</title>
+
+    <!-- مسیر استایل نهایی و اصلاح شده -->
+    <link rel="stylesheet" href="{% static 'product/css/product_detail.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- گالری تصاویر -->
+        <div class="card gallery">
+            <div class="main-img-wrap">
+                <!-- اگر عکس اصلی محصول نبود، یک عکس پیش‌فرض نشون می‌ده تا خطا نده -->
+                <img id="mainImage" src="{{ product.image.url|default:'/static/default.jpg' }}" alt="{{ product.name }}">
+            </div>
+
+            <!-- اگر محصول عکس‌های اضافی داشت، این بخش رو نشون میده -->
+            {% if product.images.exists %}
+            <div class="thumbs">
+                {% for img in product.images.all %}
+                <div class="thumb" onclick="changeImage('{{ img.image.url }}')">
+                    <img src="{{ img.image.url }}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- جزئیات محصول -->
+        <div class="card details">
+
+            <h2>{{ product.name }}</h2>
+
+            <p class="price">
+                {{ product.price }} تومان
+            </p>
+
+            <p style="color:#ccc; margin:10px 0;">
+                {{ product.description }}
+            </p>
+
+            <div class="buy-row">
+                <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn" type="submit">افزودن به سبد خرید</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script>
+    function changeImage(url) {
+        document.getElementById("mainImage").src = url;
+    }
+</script>
+
+</body>
+</html>

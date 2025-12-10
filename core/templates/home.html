@@ -1,0 +1,50 @@
+{# home.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}خانه | FarzadShop{% endblock %}
+
+{% block extra_head %}
+    {# می‌توانید اینجا CSS یا JS خاصی برای home.html اضافه کنید اگر نیاز بود #}
+{% endblock %}
+
+{% block content %}
+<div class="feature-section">
+    <h2>به فرزادشاپ خوش آمدید!</h2>
+    <p style="font-size: 1.3em; color: #a0a0a0; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        مجموعه‌ای بی‌نظیر از محصولات با کیفیت و جدیدترین‌ها را در اینجا پیدا کنید. ما به کیفیت و رضایت شما اهمیت می‌دهیم.
+    </p>
+
+    <div class="feature-items-container">
+        {# آیتم اول - با تصویر OIP (2).jpg #}
+        <div class="feature-item">
+            <div>
+                <img src="{% static 'image/OIP (2).jpg' %}" alt="محصولات جدید" loading="lazy">
+                <h3>جدیدترین محصولات</h3>
+                <p>همیشه به‌روز باشید! جدیدترین فناوری‌ها و محصولات را پیش از هر کس دیگری تجربه کنید. کیفیت و نوآوری در دستان شماست.</p>
+            </div>
+            <a href="{% url 'product:product_list' %}" class="btn">مشاهده محصولات جدید</a>
+        </div>
+
+        {# آیتم دوم - با تصویر OIP (3).jpg #}
+        <div class="feature-item">
+            <div>
+                <img src="{% static 'image/OIP (3).jpg' %}" alt="کیفیت برتر" loading="lazy">
+                <h3>کیفیت بی‌نظیر</h3>
+                <p>ما فقط محصولاتی را ارائه می‌دهیم که از نظر کیفیت و دوام امتحان خود را پس داده‌اند. با خیال راحت خرید کنید.</p>
+            </div>
+            <a href="{% url 'product:product_list' %}" class="btn">گارانتی کیفیت</a>
+        </div>
+
+        {# آیتم سوم - با تصویر OIP (4).jpg #}
+        <div class="feature-item">
+            <div>
+                <img src="{% static 'image/OIP (4).jpg' %}" alt="پشتیبانی عالی" loading="lazy">
+                <h3>پشتیبانی همیشگی</h3>
+                <p>تیم پشتیبانی ما ۲۴ ساعته آماده پاسخگویی به سوالات و مشکلات شماست. رضایت شما اولویت ماست.</p>
+            </div>
+            <a href="{% url 'core:contact_us' %}" class="btn">تماس با پشتیبانی</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farzadshop</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    {% block extra_head %}
+    {# Child templates can add extra CSS/JS here #}
+    {% endblock %}
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="{% url 'core:home' %}">Farzadshop</a>
+            </div>
+            <nav class="main-nav">
+                <a href="{% url 'accunt:profile' %}">پروفایل</a>
+                <a href="{% url 'accunt:login' %}">ورود</a>
+                <a href="{% url 'accunt:signup' %}">ثبت‌نام</a>
+                <a href="{% url 'accunt:logout' %}">خروج</a>
+            </nav>
+            <div class="cart-icon">
+                <a href="/cart/">🛒 سبد خرید</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        {% block content %}
+        <!-- محتوای اصلی صفحه در اینجا قرار می گیرد -->
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h3>درباره ما</h3>
+                <p>فروشگاه فرزادشاپ، مقصد شما برای بهترین محصولات با کیفیت و قیمت مناسب.</p>
+            </div>
+            <div class="footer-section important-links">
+                <h3>لینک‌های مهم</h3>
+                <ul>
+                    <li><a href="{% url 'core:home' %}">خانه</a></li>
+                    <li><a href="{% url 'product:product_list' %}">محصولات</a></li>
+                    <li><a href="/cart/">سبد خرید</a></li>
+                    <li><a href="{% url 'core:contact_us' %}">تماس با ما</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social-media">
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons">
+                    <a href="#"><!-- <img src="{% static 'images/social/instagram.png' %}" alt="Instagram"> --> Instagram</a>
+                    <a href="#"><!-- <img src="{% static 'images/social/telegram.png' %}" alt="Telegram"> --> Telegram</a>
+                    <a href="#"><!-- <img src="{% static 'images/social/whatsapp.png' %}" alt="WhatsApp"> --> WhatsApp</a>
+                </div>
+                <div class="support-info">
+                    <h4>پشتیبانی</h4>
+                    <p>تلفن: 0912-000-0000</p>
+                    <p>ساعات پاسخ‌گویی: 9 الی 20</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

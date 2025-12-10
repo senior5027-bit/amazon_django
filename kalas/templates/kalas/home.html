@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>لیست کالاها</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { font-family: sans-serif; background-color: #f8f9fa; margin: 20px; direction: rtl; }
+        h1 { text-align: center; margin-bottom: 40px; }
+        .container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .card {
+            width: 250px; background: #fff; border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            padding: 15px; text-align: center;
+            transition: transform .2s;
+        }
+        .card:hover { transform: scale(1.05); }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+        .card h3 { margin: 10px 0 5px; color: #333; }
+        .card p { color: #555; font-size: 14px; margin-bottom: 8px; }
+        .price { color: #007bff; font-weight: bold; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<h1>📦 لیست کالاها</h1>
+
+<!-- عکس تستی از static -->
+<div style="text-align:center; margin-bottom:30px;">
+    <img src="{% static 'img/WIN_20240504_07_27_43_Pro.jpg' %}" alt="عکس تستی استاتیک" width="400">
+</div>
+
+<div class="container">
+    {% for product in products %}
+        <div class="card">
+
+            {% if product.images.first %}
+                <!-- عکس اول محصول -->
+                <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <!-- عکس پیش‌فرض -->
+                <img src="{% static 'img/WIN_20240504_07_27_43_Pro.jpg' %}" alt="بدون عکس">
+            {% endif %}
+
+            <h3>{{ product.name }}</h3>
+            <p class="price">{{ product.price }} تومان</p>
+            <p>{{ product.description }}</p>
+        </div>
+
+    {% empty %}
+        <p>هنوز کالایی در دیتابیس نیست 😅</p>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>

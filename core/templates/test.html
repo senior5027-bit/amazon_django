@@ -1,0 +1,96 @@
+<html dir="rtl">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>FarzadShop</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+    <div>farzadshop</div>
+
+    <div>
+        <a href="{% url 'accunt:login' %}">login</a>
+        <a href="{% url 'accunt:signup' %}">sign_up</a>
+        <a href="{% url 'accunt:logout' %}">log_out</a>
+        <a href="#">profile</a>
+    </div>
+</div>
+
+    <!-- Main Section (باید قبل از فوتر باشد) -->
+    <main class="main-section">
+        <div class="main-container">
+
+            <div class="box">
+                <img src="{% static 'image/OIP (2).jpg' %}" alt="product 1">
+                <h3>طبیعت</h3>
+                <p>لوکیشنی عالی</p>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'image/OIP (3).jpg' %}" alt="product 2">
+                <h3>طبیعت</h3>
+                <p>سفر خوشی را برایتان آرزومندیم</p>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'image/OIP (4).jpg' %}" alt="product 3">
+                <h3>گل و گیاه</h3>
+                <p>عطر و طعم خوش زندگی</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-box">
+                <h3>درباره ما</h3>
+                <p>
+                    این فروشگاه برای ارائه بهترین محصولات با بهترین قیمت ساخته شده است.
+                    هدف ما ارائه تجربه خرید امن، سریع و راحت برای شماست.
+                </p>
+            </div>
+
+            <div class="footer-box">
+                <h3>لینک‌های مهم</h3>
+                <ul>
+                    <li><a href="#">خانه</a></li>
+                    <li><a href="#">محصولات</a></li>
+                    <li><a href="#">سبد خرید</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>شبکه‌های اجتماعی</h3>
+                <ul>
+                    <li><a href="#">اینستاگرام</a></li>
+                    <li><a href="#">تلگرام</a></li>
+                    <li><a href="#">واتساپ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>پشتیبانی</h3>
+                <p>شماره تماس:
+                    <strong>0912-000-0000</strong>
+                </p>
+                <p>ساعات پاسخ‌گویی: 9 الی 20</p>
+            </div>
+
+        </div>
+
+        <p style="text-align:center; margin-top:30px; color:#aaa; font-size:14px;">
+            © 2025. همه حقوق محفوظ است.
+        </p>
+    </footer>
+
+</body>
+</html>

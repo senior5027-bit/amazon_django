@@ -1,0 +1,216 @@
+/* CSS Reset و تنظیمات پایه */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* پس‌زمینه جدید: گرادیانت تاریک و عمیق */
+    background: radial-gradient(circle at 10% 20%, #1a002b 0%, #0d0d0d 60%, #05000a 100%);
+    background-attachment: fixed; /* برای ثابت نگه داشتن گرادیانت هنگام اسکرول */
+    color: #e0e0e0; /* رنگ متن اصلی */
+    font-family: 'Vazirmatn', sans-serif; /* استفاده از فونت Vazirmatn */
+    direction: rtl; /* برای نمایش راست به چپ */
+    text-align: right; /* متن راست چین */
+    line-height: 1.6;
+}
+
+/* انتخاب متن: جزئیات کوچکی که ظرافت می‌بخشند */
+::selection {
+    background-color: #6A1B9A;
+    color: #ffffff;
+}
+::-moz-selection {
+    background-color: #6A1B9A;
+    color: #ffffff;
+}
+
+/* هدر */
+.page-header {
+    background-color: rgba(46, 8, 84, 0.8); /* کمی شفاف‌تر برای حس عمق */
+    padding: 25px 0; /* کمی پدینگ بیشتر */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6); /* سایه عمیق‌تر */
+    margin-bottom: 40px; /* فاصله بیشتر از محصولات */
+    backdrop-filter: blur(5px); /* بلور خفیف برای هدر */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.page-header h1 {
+    color: #ffcc33; /* طلایی روشن‌تر و جذاب‌تر */
+    font-size: 2.8em; /* کمی بزرگ‌تر */
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255,193,7,0.5); /* سایه متنی ظریف */
+    font-weight: 700; /* وزن بیشتر برای فونت */
+}
+
+/* کانتینر محصولات */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* فاصله بیشتر بین کارت‌ها */
+    justify-content: center;
+    padding: 20px;
+    max-width: 1300px; /* عرض بیشتر برای کانتینر */
+    margin: 0 auto;
+}
+
+/* کارت محصول */
+.product-card {
+    background-color: rgba(255,255,255,0.08); /* کمی شفاف‌تر برای بلور بهتر */
+    border-radius: 20px; /* گردی بیشتر لبه‌ها */
+    padding: 25px; /* پدینگ بیشتر */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.05); /* سایه عمیق‌تر و اینست شادو برای حس برجستگی */
+    backdrop-filter: blur(15px); /* بلور بیشتر برای حس شیشه */
+    -webkit-backdrop-filter: blur(15px);
+    text-align: center;
+    width: 230px; /* کمی بزرگتر از 220px برای تعادل بهتر */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; /* انیمیشن نرم‌تر */
+    border: 1px solid rgba(255,255,255,0.1); /* مرز ظریف */
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02); /* حرکت و کمی بزرگتر شدن */
+    box-shadow: 0 15px 35px rgba(106,27,154,0.7), 0 0 20px rgba(255,193,7,0.4); /* سایه بنفش و طلایی روی هاور */
+    border-color: rgba(255,195,7,0.5); /* مرز طلایی روی هاور */
+}
+
+.product-card h3 {
+    color: #ffcc33; /* طلایی روشن‌تر */
+    margin-bottom: 18px; /* فاصله بیشتر */
+    font-size: 1.5em; /* کمی بزرگ‌تر */
+    font-weight: 700; /* وزن بیشتر */
+    text-shadow: 0 0 5px rgba(255,193,7,0.3);
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 160px; /* کمی بزرگ‌تر */
+    object-fit: cover; /* پوشش کامل فضا با برش در صورت نیاز */
+    border-radius: 15px; /* گردی بیشتر */
+    margin: 0 auto 25px auto; /* فاصله بیشتر */
+    border: 3px solid rgba(255,255,255,0.2); /* مرز برجسته‌تر */
+    background-color: rgba(0,0,0,0.3); /* پس‌زمینه کمی تیره‌تر برای عکس */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* سایه داخلی برای عمق عکس */
+}
+
+.image-placeholder {
+    color: #ffc107; 
+    font-weight: bold; 
+    margin-top: 10px;
+    height: 160px; /* برای حفظ اندازه کارت‌ها در صورت نبود عکس */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+.product-card p.price {
+    font-size: 1.4em; /* کمی بزرگ‌تر */
+    color: #a7f7a7; /* سبز روشن‌تر و زنده‌تر */
+    font-weight: bold;
+    margin-bottom: 25px; /* فاصله بیشتر */
+    letter-spacing: 0.5px; /* کمی فاصله بین حروف */
+    text-shadow: 0 0 8px rgba(167,247,167,0.4);
+}
+
+.product-card-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* فاصله بیشتر بین دکمه‌ها */
+    width: 100%;
+}
+
+.product-card a.details-btn,
+.product-card button.add-to-cart-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 18px; /* پدینگ بیشتر برای دکمه‌ها */
+    border-radius: 10px; /* گردی بیشتر */
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* انیمیشن نرم‌تر */
+    font-size: 1.15em; /* کمی بزرگ‌تر */
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    position: relative; 
+    overflow: hidden; 
+}
+/* افکت نور روی دکمه‌ها */
+.product-card a.details-btn::before,
+.product-card button.add-to-cart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transform: skewX(-30deg);
+    transition: 0.7s;
+}
+.product-card a.details-btn:hover::before,
+.product-card button.add-to-cart-btn:hover::before {
+    left: 100%;
+}
+
+
+.product-card a.details-btn {
+    background-color: #6A1B9A; /* بنفش اصلی */
+    color: white;
+    box-shadow: 0 4px 10px rgba(106,27,154,0.4);
+}
+
+.product-card a.details-btn:hover {
+    background-color: #8e24aa;
+    transform: scale(1.03); 
+    box-shadow: 0 6px 15px rgba(106,27,154,0.7);
+}
+
+.product-card button.add-to-cart-btn {
+    background-color: #ffc107; /* طلایی اصلی */
+    color: #2e0854; /* متن بنفش روی دکمه طلایی */
+    box-shadow: 0 4px 10px rgba(255,193,7,0.4);
+}
+
+.product-card button.add-to-cart-btn:hover {
+    background-color: #ffdb58; /* طلایی روشن‌تر */
+    transform: scale(1.03); 
+    box-shadow: 0 6px 15px rgba(255,193,7,0.7);
+}
+
+.no-products {
+    text-align: center;
+    font-size: 1.6em;
+    color: #ffdb58; /* طلایی روشن‌تر */
+    margin-top: 100px; 
+    padding: 30px; 
+    background-color: rgba(255,255,255,0.08); 
+    border-radius: 15px; 
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.page-footer {
+    background-color: rgba(46, 8, 84, 0.8); /* کمی شفاف‌تر */
+    color: #ffdb58; /* طلایی روشن‌تر */
+    text-align: center;
+    padding: 25px 0; /* پدینگ بیشتر */
+    margin-top: 60px; /* فاصله بیشتر */
+    font-size: 1em; 
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+}

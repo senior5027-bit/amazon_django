@@ -1,0 +1,141 @@
+<!-- E:/tamrin_kelas/core/templates/core/contact_us.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contact-us-container">
+    <h2>تماس با ما</h2>
+    <p>برای هرگونه سوال، پیشنهاد یا انتقاد، می‌توانید از طریق فرم زیر با ما در تماس باشید یا اطلاعات تماس ما را مشاهده کنید.</p>
+
+    <div class="contact-info">
+        <h3>اطلاعات تماس</h3>
+        <p><strong>آدرس:</strong> تهران، خیابان فرزاد، کوچه فرزاد، پلاک ۱۰</p>
+        <p><strong>تلفن:</strong> ۰۲۱-۱۲۳۴۵۶۷۸</p>
+        <p><strong>ایمیل:</strong> info@farzadshop.com</p>
+    </div>
+
+    <form class="contact-form" action="#" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">نام شما:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">ایمیل شما:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">موضوع:</label>
+            <input type="text" id="subject" name="subject">
+        </div>
+        <div class="form-group">
+            <label for="message">پیام شما:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">ارسال پیام</button>
+    </form>
+</div>
+
+<style>
+    .contact-us-container {
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+        color: #e0e0e0;
+        text-align: right; /* راست چین کردن متن */
+        direction: rtl; /* برای پشتیبانی از زبان فارسی */
+    }
+
+    .contact-us-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #f0f0f0;
+        font-size: 2.2em;
+    }
+
+    .contact-us-container p {
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .contact-info {
+        background-color: #2a2a2a;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-info h3 {
+        color: #00bcd4;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .contact-info p {
+        margin-bottom: 10px;
+    }
+
+    .contact-info strong {
+        color: #fff;
+    }
+
+    .contact-form {
+        background-color: #2a2a2a;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #f0f0f0;
+        font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: calc(100% - 20px); /* عرض کامل با کمی فاصله برای padding */
+        padding: 12px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #333;
+        color: #f0f0f0;
+        font-size: 1em;
+        box-sizing: border-box; /* برای اینکه padding به عرض اضافه نشود */
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group textarea:focus {
+        border-color: #00bcd4;
+        outline: none;
+    }
+
+    .submit-btn {
+        background-color: #00bcd4; /* آبی فیروزه‌ای برای دکمه */
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.2s;
+        display: block; /* دکمه به عرض کامل درآید */
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+        background-color: #0097a7;
+    }
+</style>
+{% endblock %}
