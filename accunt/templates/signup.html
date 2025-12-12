@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <style>
 body {
@@ -14,73 +15,53 @@ body {
     border-radius: 15px;
     text-align: center;
 }
-.auth-box h2 {
-    color: #6a00b8;
-    margin-bottom: 20px;
-}
 .auth-box input {
     width: 100%;
     border: 1px solid #bbb;
     border-radius: 8px;
     padding: 12px;
-    margin-bottom: 14px;
-    transition: 0.3s;
+    margin-bottom: 6px;
 }
-.auth-box input:focus {
-    border-color: #8c00ff;
-    box-shadow: 0 0 5px rgba(140,0,255,0.3);
-    outline: none;
-}
-.auth-box button {
-    background: #7b00b6;
-    color: #fff;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 15px;
-    transition: background 0.3s ease;
-}
-.auth-box button:hover {
-    background: #57008b;
-}
-.auth-box .link {
-    margin-top: 12px;
-    font-size: 14px;
-}
-.auth-box .link a {
-    color: #7500b0;
-    text-decoration: none;
-}
-.auth-box .link a:hover {
-    text-decoration: underline;
-}
-.message {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-.message.error { color: #d60000; }
+.message.error { color: #d60000; font-size:14px }
 .message.success { color: #008000; }
 </style>
 
 <div class="auth-box">
     <h2>ایجاد حساب جدید</h2>
 
-    {% if messages %}
-        {% for msg in messages %}
-            <p class="message {{ msg.tags }}">{{ msg }}</p>
-        {% endfor %}
-    {% endif %}
+    {% for msg in messages %}
+        <p class="message {{ msg.tags }}">{{ msg }}</p>
+    {% endfor %}
 
     <form method="POST">
-            {% csrf_token %}
+        {% csrf_token %}
 
-        <input type="text" name="first_name" placeholder="نام" required>
-        <input type="text" name="last_name" placeholder="نام خانوادگی" required>
-        <input type="text" name="username" placeholder="نام کاربری" required>
-        <input type="password" name="password" placeholder="رمز عبور" required>
-        <input type="password" name="repassword" placeholder="تکرار رمز عبور" required>
+        {{ form.first_name }}
+        {% for e in form.first_name.errors %}
+            <p class="message error">{{ e }}</p>
+        {% endfor %}
+
+        {{ form.last_name }}
+        {% for e in form.last_name.errors %}
+            <p class="message error">{{ e }}</p>
+        {% endfor %}
+
+        {{ form.username }}
+        {% for e in form.username.errors %}
+            <p class="message error">{{ e }}</p>
+        {% endfor %}
+
+        {{ form.password }}
+        {% for e in form.password.errors %}
+            <p class="message error">{{ e }}</p>
+        {% endfor %}
+
+        {{ form.repassword }}
+
+        {% for e in form.non_field_errors %}
+            <p class="message error">{{ e }}</p>
+        {% endfor %}
+
         <button type="submit">ثبت‌نام</button>
     </form>
 

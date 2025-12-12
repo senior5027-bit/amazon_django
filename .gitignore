@@ -1,4 +1,6 @@
-pycacha/
+__pycache__/
+admin.zip
+
 *.pyc
 *.pyo
 *.pyd

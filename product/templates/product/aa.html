@@ -5,53 +5,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>لیست محصولات | FarzadShop</title>
+
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
 
-    <!-- لینک کردن فونت Vazirmatn -->
+    <!-- فونت -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- لینک کردن فایل CSS خارجی: aa.css -->
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/aa.css' %}">
 </head>
+
 <body>
-    <header class="page-header">
-        <h1>محصولات ما</h1>
-    </header>
 
-    <main>
-        <div class="product-container">
-            {% for product in products %}
-            <div class="product-card">
-                <div>
-                    <h3>{{ product.title }}</h3>
-                    {% if product.images.all %}
-                        {% with first_image=product.images.first %}
-                            {% if first_image.image %}
-                                <img src="{{ first_image.image.url }}" alt="{{ product.title }}" loading="lazy" />
-                            {% else %}
-                                <p class="image-placeholder">عکس موجود نیست</p>
-                            {% endif %}
-                        {% endwith %}
-                    {% else %}
-                        <p class="image-placeholder">عکس موجود نیست</p>
-                    {% endif %}
-                    <p class="price">{{ product.price }} تومان</p>
-                </div>
-                <div class="product-card-actions">
-                    <a href="{% url 'product:product_detail' product.id %}" class="details-btn">مشاهده جزئیات</a>
-                    <button type="button" class="add-to-cart-btn">افزودن به سبد خرید</button>
-                </div>
+<header class="page-header">
+    <h1>محصولات ما</h1>
+</header>
+
+<main>
+    <div class="product-container">
+
+        {% for product in products %}
+        <div class="product-card">
+
+            <div class="product-card-body">
+                <h3>{{ product.title }}</h3>
+
+                {% if product.images.all %}
+                    {% with first_image=product.images.first %}
+                        {% if first_image.image %}
+                            <img src="{{ first_image.image.url }}"
+                                 alt="{{ product.title }}"
+                                 loading="lazy">
+                        {% else %}
+                            <p class="image-placeholder">عکس موجود نیست</p>
+                        {% endif %}
+                    {% endwith %}
+                {% else %}
+                    <p class="image-placeholder">عکس موجود نیست</p>
+                {% endif %}
+
+                <p class="price">{{ product.price }} تومان</p>
             </div>
-            {% empty %}
-            <p class="no-products">فعلاً محصولی برای نمایش وجود ندارد.</p>
-            {% endfor %}
-        </div>
-    </main>
 
-    <footer class="page-footer">
-        <p>تمام حقوق مادی و معنوی این وبسایت متعلق به FarzadShop می‌باشد.</p>
-    </footer>
+            <div class="product-card-actions">
+
+                <!-- جزئیات محصول -->
+                <a href="{% url 'product:product_detail' product.id %}"
+                   class="details-btn">
+                    مشاهده جزئیات
+                </a>
+
+                <!-- ✅ افزودن به سبد خرید (اصلاح شده) -->
+                <form method="post"
+                      action="{% url 'cart:add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit"
+                            class="add-to-cart-btn">
+                        افزودن به سبد خرید
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        {% empty %}
+
+        <p class="no-products">
+            فعلاً محصولی برای نمایش وجود ندارد.
+        </p>
+
+        {% endfor %}
+
+    </div>
+</main>
+
+<footer class="page-footer">
+    <p>
+        تمام حقوق مادی و معنوی این وبسایت متعلق به FarzadShop می‌باشد.
+    </p>
+</footer>
+
 </body>
 </html>

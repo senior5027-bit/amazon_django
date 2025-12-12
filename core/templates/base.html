@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farzadshop</title>
+    <title><i>Farzadshop</i></title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="icon" href="{% static 'favicon.ico' %}">
     {% block extra_head %}
@@ -18,20 +18,20 @@
                 <a href="{% url 'core:home' %}">Farzadshop</a>
             </div>
             <nav class="main-nav">
-                <a href="{% url 'accunt:profile' %}">پروفایل</a>
-                <a href="{% url 'accunt:login' %}">ورود</a>
-                <a href="{% url 'accunt:signup' %}">ثبت‌نام</a>
-                <a href="{% url 'accunt:logout' %}">خروج</a>
+                <a href="{% url 'accunt:profile' %}"><i>پروفایل</i></a>
+                <a href="{% url 'accunt:login' %}"><strong>ورود</strong></a>
+                <a href="{% url 'accunt:signup' %}"><big>ثبت‌نام</big></a>
+                <a href="{% url 'accunt:logout' %}"><big>خروج</big></a>
             </nav>
             <div class="cart-icon">
-                <a href="/cart/">🛒 سبد خرید</a>
+                <a href="/cart/"><mark>🛒سبد خرید</mark></a>
             </div>
         </div>
     </div>
 
     <div class="main">
         {% block content %}
-        <!-- محتوای اصلی صفحه در اینجا قرار می گیرد -->
+        
         {% endblock %}
     </div>
 

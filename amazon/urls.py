@@ -7,15 +7,18 @@ from  core.views import test_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
 
-    # صفحه اصلی
-    path('', include('product.urls')),
+   
+    path('',include('core.urls')),
 
-    # مسیرهای اپ لاگین / ثبت‌نام
+    
     path('accunt/', include('accunt.urls')),
-    path('core/',include('core.urls')),
+    path('product', include('product.urls')),
     path('test/',test_page,name='test_page'),
-    path('cart/',include('cart.urls'))
+    path('cart/',include('cart.urls')),
+    path('orders/', include('farzad_orders.urls')),
+
 ]
 
 if settings.DEBUG:

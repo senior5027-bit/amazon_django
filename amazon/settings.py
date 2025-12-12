@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'accunt',
     'core',
     'cart',
+    'farzad_orders',
 ]
 
 MIDDLEWARE = [
